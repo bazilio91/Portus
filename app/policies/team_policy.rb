@@ -18,6 +18,10 @@ class TeamPolicy
     user.admin? || team.owners.exists?(user.id)
   end
 
+  def contributor?
+    user.admin? || team.contributors.exists?(user.id)
+  end
+
   def create?
     APP_CONFIG.enabled?("user_permission.create_team") || user.admin?
   end
